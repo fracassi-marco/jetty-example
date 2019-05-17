@@ -14,7 +14,6 @@ public class ApplicationServer {
     private Server server;
 
     public ApplicationServer(int port, Servlet servlet) {
-
         this.port = port;
         this.servlet = servlet;
     }

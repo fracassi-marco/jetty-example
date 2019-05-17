@@ -10,6 +10,9 @@ public class RythmApplication extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response ) throws IOException {
         String name = request.getParameter("name");
 
+        response.setContentType("text/html");
+        response.setStatus(HttpServletResponse.SC_OK);
+
         if(name != null)
             write(response, Rythm.render("hello.html", name));
         else
