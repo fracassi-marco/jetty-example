@@ -45,6 +45,10 @@ mvn test
 
 * **[Marco Fracassi](https://github.com/fracassi-marco)**
 
+## Contributors
+
+* **[Roberto Grandi](https://github.com/kamakay)**
+
 ## License
 
 This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 - see the [LICENSE](LICENSE) file for details
