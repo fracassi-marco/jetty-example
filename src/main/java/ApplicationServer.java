@@ -1,8 +1,11 @@
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.rythmengine.Rythm;
 
 import javax.servlet.Servlet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ApplicationServer {
 
@@ -26,5 +29,16 @@ public class ApplicationServer {
 
     public void stop() throws Exception {
         server.stop();
+    }
+
+    public ApplicationServer withRythm() {
+        initTemplateEngine();
+        return this;
+    }
+
+    private void initTemplateEngine() {
+        Map<String, Object> conf = new HashMap<String, Object>();
+        conf.put("home.template", "templates");
+        Rythm.init(conf);
     }
 }
