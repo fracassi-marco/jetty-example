@@ -8,10 +8,10 @@ import java.util.List;
 
 public class MyApplication extends HttpServlet {
 
-    List<String> names = new ArrayList<>();
+    private List<String> names = new ArrayList<>();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if(names.isEmpty()) {
             write(resp, "empty");
         }
@@ -21,7 +21,7 @@ public class MyApplication extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         names.add(req.getParameter("name"));
 
         write(resp, "added");
