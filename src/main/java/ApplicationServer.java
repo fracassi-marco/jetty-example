@@ -1,4 +1,5 @@
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.rythmengine.Rythm;
@@ -22,6 +23,7 @@ public class ApplicationServer {
         server = new Server(port);
         ServletContextHandler handler = new ServletContextHandler();
         handler.addServlet(new ServletHolder(servlet), "/*");
+        addStaticFileServing(handler);
         server.setHandler(handler);
         server.start();
     }
@@ -39,5 +41,13 @@ public class ApplicationServer {
         Map<String, Object> conf = new HashMap<>();
         conf.put("home.template", "templates");
         Rythm.init(conf);
+    }
+
+    private void addStaticFileServing(ServletContextHandler handler) {
+        ServletHolder holderPwd = new ServletHolder("default", new DefaultServlet());
+        holderPwd.setInitParameter("resourceBase", "./src/main/resources/static");
+        holderPwd.setInitParameter("dirAllowed","false");
+        holderPwd.setInitParameter("pathInfoOnly","true");
+        handler.addServlet(holderPwd, "/static/*");
     }
 }
