@@ -11,12 +11,12 @@ import static org.hamcrest.core.StringContains.containsString;
 public class EndToEndTest {
 
     private WebDriver driver;
-    private ApplicationServer server = new ApplicationServer(4567, new MyApplication());
+    private final ApplicationServer server = new ApplicationServer(4567, new MyApplication());
 
     @Before
     public void setUp() throws Exception {
         server.start();
-        WebDriverManager.chromedriver().version("74").setup();
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
 

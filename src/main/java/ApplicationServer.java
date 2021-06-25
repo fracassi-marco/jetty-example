@@ -4,14 +4,14 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.rythmengine.Rythm;
 
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ApplicationServer {
 
-    private int port;
-    private Servlet servlet;
+    private final int port;
+    private final Servlet servlet;
     private Server server;
 
     public ApplicationServer(int port, Servlet servlet) {
